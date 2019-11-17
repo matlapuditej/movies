@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 
-// let mname = "";
 class MtButton extends Component {
   constructor(props) {
     super(props);

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
-import MtButton from "../components/button/MtButton";
-import MtTable from "../components/Table/MtTable";
+import MtButton from "../components/button/mtButton";
+import MtTable from "../components/table/mtTable";
 
 class Movies extends Component {
   state = {
