@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
+import MtButton from "../components/button/MtButton";
+import MtTable from "../components/Table/MtTable";
 
 class Movies extends Component {
   state = {
@@ -7,6 +9,7 @@ class Movies extends Component {
   };
 
   handleDelete = movie => {
+    console.log(movie);
     const movies = this.state.movies.filter(m => m._id !== movie._id);
     this.setState({ movies });
   };
@@ -33,21 +36,24 @@ class Movies extends Component {
             {this.state.movies.map(movie => (
               <tr key={movie._id}>
                 <td>{movie.title}</td>
-                <td>{movie.genre.name}</td>
+                <td>{movie.genre}</td>
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>
                 <td>
-                  <button
-                    onClick={() => this.handleDelete(movie)}
-                    className="btn btn-danger btn-sm"
-                  >
-                    Delete
-                  </button>
+                  <MtButton
+                    mtext="Delete"
+                    action={() => this.handleDelete(movie)}
+                  ></MtButton>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <MtTable
+          rowCount={count}
+          columnCount={Object.keys(this.state.movies[0]).length}
+          source={this.state.movies}
+        ></MtTable>
       </div>
     );
   }
